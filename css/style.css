@@ -1,0 +1,461 @@
+/* ============================================================
+   Goldsmith Family History — stylesheet
+   Design goal: long-form article, comfortable reading,
+   academic-style citations, clean source viewer
+   ============================================================ */
+
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+/* --- Reset & base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 18px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  color: #2a2a2a;
+  background: #faf9f7;
+  line-height: 1.8;
+}
+
+/* --- Layout --- */
+.site-header {
+  background: #1a1a2e;
+  color: #e8e4dc;
+  padding: 0;
+  border-bottom: 3px solid #c9a84c;
+}
+
+.site-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-title {
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e8e4dc;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.site-title span {
+  color: #c9a84c;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #b0aaa0;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+
+.site-nav a:hover, .site-nav a.active { color: #c9a84c; }
+
+/* --- Page layout --- */
+.page-container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem;
+}
+
+.page-container.wide {
+  max-width: 1100px;
+}
+
+/* --- Typography --- */
+h1 {
+  font-family: 'Lora', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1a1a2e;
+  margin-bottom: 0.4rem;
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1a2e;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ddd8cf;
+}
+
+h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 2rem 0 0.6rem;
+}
+
+p { margin-bottom: 1.2rem; }
+
+a { color: #7a5c2e; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: #c9a84c; }
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+/* --- Article header --- */
+.article-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.article-meta .dates {
+  display: flex;
+  gap: 1rem;
+}
+
+.quick-facts {
+  background: #f2ede4;
+  border-left: 3px solid #c9a84c;
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0 2.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+}
+
+.quick-facts h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  margin: 0 0 0.8rem;
+}
+
+.quick-facts table { width: 100%; border-collapse: collapse; }
+.quick-facts td { padding: 0.25rem 0; vertical-align: top; }
+.quick-facts td:first-child { color: #666; width: 140px; padding-right: 1rem; white-space: nowrap; }
+.quick-facts td:last-child { color: #2a2a2a; }
+
+/* --- Footnotes / citations --- */
+/* Inline superscript numbers */
+sup.cite {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  vertical-align: super;
+  line-height: 0;
+  color: #7a5c2e;
+}
+
+sup.cite a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0 1px;
+}
+
+sup.cite a:hover { color: #c9a84c; text-decoration: underline; }
+
+/* Footnote list at bottom */
+.footnotes {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd8cf;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #555;
+}
+
+.footnotes h2 {
+  font-size: 0.75rem;
+  color: #888;
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+.footnotes ol { padding-left: 1.5rem; }
+.footnotes li { margin-bottom: 0.5rem; line-height: 1.5; }
+.footnotes li a { color: #7a5c2e; }
+.footnotes .backlink { color: #bbb; text-decoration: none; margin-left: 0.3rem; }
+.footnotes .backlink:hover { color: #c9a84c; }
+
+/* --- Source / record callout boxes --- */
+.record-box {
+  border: 1px solid #ddd8cf;
+  border-radius: 4px;
+  margin: 2rem 0;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+.record-box-header {
+  background: #f2ede4;
+  padding: 0.6rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd8cf;
+}
+
+.record-box-header .record-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.record-box-header .record-title {
+  font-weight: 600;
+  color: #1a1a2e;
+  font-size: 0.9rem;
+}
+
+.record-box-body {
+  padding: 1rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+.record-thumb {
+  width: 120px;
+  flex-shrink: 0;
+  cursor: zoom-in;
+}
+
+.record-thumb img {
+  width: 100%;
+  border: 1px solid #ccc;
+  display: block;
+  transition: opacity 0.15s;
+}
+
+.record-thumb img:hover { opacity: 0.85; }
+
+.record-thumb .view-link {
+  display: block;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 0.3rem;
+  text-decoration: none;
+}
+
+.record-thumb .view-link:hover { color: #7a5c2e; }
+
+.record-fields { flex: 1; }
+
+.record-fields table { width: 100%; border-collapse: collapse; }
+.record-fields td { padding: 0.2rem 0; vertical-align: top; border-bottom: 1px solid #f0ece5; }
+.record-fields td:first-child { color: #888; width: 160px; padding-right: 0.8rem; white-space: nowrap; font-size: 0.8rem; }
+.record-fields td:last-child { color: #2a2a2a; }
+.record-fields tr:last-child td { border-bottom: none; }
+.record-fields .highlight { background: #fff8e6; font-weight: 600; }
+.record-fields .uncertain { color: #888; font-style: italic; }
+
+/* --- Fact / uncertainty callouts --- */
+.callout {
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.callout-confirmed {
+  background: #f0f7f0;
+  border-left: 3px solid #5a9e6f;
+  color: #2a4a2e;
+}
+
+.callout-uncertain {
+  background: #fdf8ed;
+  border-left: 3px solid #c9a84c;
+  color: #4a3e1e;
+}
+
+.callout-disproved {
+  background: #fdf0ef;
+  border-left: 3px solid #c05c5c;
+  color: #4a1e1e;
+}
+
+.callout-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.callout-confirmed .callout-label { color: #5a9e6f; }
+.callout-uncertain .callout-label { color: #c9a84c; }
+.callout-disproved .callout-label { color: #c05c5c; }
+
+/* --- Historical context sidebars --- */
+.context-sidebar {
+  float: right;
+  width: 280px;
+  margin: 0 0 1.5rem 2rem;
+  background: #f8f5ef;
+  border: 1px solid #e0d9cc;
+  border-radius: 3px;
+  padding: 1rem 1.2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.context-sidebar h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .context-sidebar { float: none; width: 100%; margin: 1.5rem 0; }
+}
+
+/* --- Home page --- */
+.home-intro {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 620px;
+  margin-bottom: 3rem;
+  line-height: 1.9;
+}
+
+.person-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.person-card {
+  background: #fff;
+  border: 1px solid #e0d9cc;
+  border-radius: 4px;
+  padding: 1.3rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  display: block;
+}
+
+.person-card:hover {
+  border-color: #c9a84c;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  text-decoration: none;
+  color: inherit;
+}
+
+.person-card-name {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 0.3rem;
+}
+
+.person-card-dates {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: #888;
+  margin-bottom: 0.7rem;
+}
+
+.person-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.person-card-relation {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c9a84c;
+}
+
+/* --- Sources index --- */
+.source-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.source-card {
+  border: 1px solid #e0d9cc;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  cursor: zoom-in;
+  transition: border-color 0.15s;
+}
+
+.source-card:hover { border-color: #c9a84c; }
+
+.source-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #e0d9cc;
+}
+
+.source-card-info { padding: 0.7rem; }
+.source-card-title { font-weight: 600; color: #1a1a2e; margin-bottom: 0.2rem; }
+.source-card-sub { color: #888; font-size: 0.78rem; }
+
+/* --- Lightbox overrides (GLightbox) --- */
+.gslide-description .gdesc-inner { font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+
+/* --- Utility --- */
+.text-muted { color: #888; }
+.font-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+.mt-0 { margin-top: 0; }
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+  .page-container { padding: 2rem 1.2rem 4rem; }
+  h1 { font-size: 1.7rem; }
+  .record-box-body { flex-direction: column; }
+  .record-thumb { width: 100%; }
+  .quick-facts td:first-child { width: 110px; }
+}
