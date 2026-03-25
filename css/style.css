@@ -118,6 +118,29 @@ a:hover { color: #c9a84c; }
 strong { font-weight: 600; }
 em { font-style: italic; }
 
+/* --- Portrait photo --- */
+.article-portrait {
+  float: right;
+  margin: 0 0 1.5rem 2rem;
+  text-align: center;
+  max-width: 180px;
+}
+.article-portrait img {
+  width: 100%;
+  border: 1px solid #d5c9b5;
+  display: block;
+}
+.article-portrait figcaption {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+@media (max-width: 480px) {
+  .article-portrait { float: none; margin: 0 auto 1.5rem; max-width: 140px; }
+}
+
 /* --- Article header --- */
 .article-meta {
   font-family: 'Inter', sans-serif;
